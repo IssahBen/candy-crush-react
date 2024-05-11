@@ -10,6 +10,7 @@
   overflow-x: hidden;
   gap: 0;
   background-image: url("./images/wall.webp");
+  background-size: cover;
 }
 
 .game {
@@ -35,7 +36,7 @@
 /* hsl(231, 100%, 63%); */
 .board {
   background-color: #e0218a;
-  width: 100%;
+  width: 330px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 
