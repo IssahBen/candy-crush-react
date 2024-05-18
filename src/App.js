@@ -1,4 +1,5 @@
-import { useState, useEffect, createContext, useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, createContext } from "react";
 import red from "./images/red.webp";
 import blue from "./images/blue.webp";
 import orange from "./images/orange.webp";
