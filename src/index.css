@@ -75,7 +75,7 @@
   height: 200px;
 }
 .btn {
-  animation: shaking 0.1s infinite;
+  animation: shaking 1s infinite;
 }
 @keyframes shaking {
   0% {
