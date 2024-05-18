@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect } from "react";
 import red from "./images/red.webp";
 import blue from "./images/blue.webp";
 import orange from "./images/orange.webp";
@@ -9,18 +9,15 @@ import blank from "./images/blank.png";
 import logo from "./images/logo.png";
 
 import ScoreBoard from "./components/ScoreBoard";
-import GameBoard from "./components/GameBoard";
-export const GameContext = createContext();
+
 const width = 8;
 const candyColors = [red, green, orange, purple, blue, yellow];
 function App() {
   const [colorArrangement, setColorArrangement] = useState([]);
   const [squareBeingDragged, setSquareBeingDragged] = useState(null);
   const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
-  const [compute, setCompute] = useState(false);
 
   const [score, setScore] = useState(0);
-
   // eslint-disable-next-line
   function checkFor3Col() {
     for (let i = 0; i <= 47; i++) {
@@ -112,63 +109,45 @@ function App() {
     }
   }
 
-  function handleClick(e) {
-    if (squareBeingDragged === null) {
-      setSquareBeingDragged((c) => (c = e.target));
-      console.log("set dragged");
-    }
+  function dragStart(e) {
+    console.log(e.target);
+    setSquareBeingDragged(e.target);
+  }
+  function dragDrop(e) {
+    console.log(e.target);
+    setSquareBeingReplaced(e.target);
+  }
+  function dragEnd(e) {
+    const replacedId = parseInt(squareBeingReplaced?.getAttribute("data-id"));
+    const draggedId = parseInt(squareBeingDragged?.getAttribute("data-id"));
+    colorArrangement[replacedId] = squareBeingDragged.getAttribute("src");
+    colorArrangement[draggedId] = squareBeingReplaced.getAttribute("src");
+    const validMoves = [
+      draggedId - 1,
+      draggedId - width,
+      draggedId + 1,
+      draggedId + width,
+    ];
 
-    if (squareBeingReplaced === null && squareBeingDragged !== null) {
-      setSquareBeingReplaced((c) => (c = e.target));
-      setCompute(true);
-      console.log("set replaced");
+    const validMove = validMoves.includes(replacedId);
+    const isRow3 = checkFor3Row();
+    const isRow4 = checkFor4Row();
+    const isCol3 = checkFor3Col();
+    const isCol4 = checkFor4Col();
+
+    if (replacedId && validMove && (isRow3 || isRow4 || isCol3 || isCol4)) {
+      setSquareBeingDragged(null);
+      setSquareBeingReplaced(null);
+    } else {
+      colorArrangement[replacedId] = squareBeingReplaced.getAttribute("src");
+      colorArrangement[draggedId] = squareBeingDragged.getAttribute("src");
+      setColorArrangement([...colorArrangement]);
+      console.log(2);
+      console.log(isRow3);
+      console.log(replacedId);
+      console.log(validMove);
     }
   }
-
-  useEffect(
-    function () {
-      const replacedId = parseInt(squareBeingReplaced?.getAttribute("data-id"));
-      const draggedId = parseInt(squareBeingDragged?.getAttribute("data-id"));
-      colorArrangement[replacedId] = squareBeingDragged?.getAttribute("src");
-      colorArrangement[draggedId] = squareBeingReplaced?.getAttribute("src");
-      const validMoves = [
-        draggedId - 1,
-        draggedId - width,
-        draggedId + 1,
-        draggedId + width,
-      ];
-
-      const validMove = validMoves.includes(replacedId);
-      const isRow3 = checkFor3Row();
-      const isRow4 = checkFor4Row();
-      const isCol3 = checkFor3Col();
-      const isCol4 = checkFor4Col();
-
-      if (replacedId && validMove && (isRow3 || isRow4 || isCol3 || isCol4)) {
-        setSquareBeingDragged(null);
-        setSquareBeingReplaced(null);
-        setCompute(false);
-        console.log("correct move");
-      } else {
-        colorArrangement[replacedId] = squareBeingReplaced?.getAttribute("src");
-        colorArrangement[draggedId] = squareBeingDragged?.getAttribute("src");
-        setColorArrangement([...colorArrangement]);
-        console.log(replacedId);
-        console.log(draggedId);
-        console.log(isRow3);
-        console.log(isRow4);
-        console.log(isCol3);
-        console.log(isCol4);
-        console.log("Incorrect move");
-        console.log(validMove);
-        console.log(squareBeingDragged);
-        setCompute(false);
-        setSquareBeingDragged(null);
-        setSquareBeingReplaced(null);
-      }
-    },
-    [compute]
-  );
   function createBoard() {
     const randomColorArrangement = [];
     for (let i = 0; i < width * width; i++) {
@@ -189,7 +168,7 @@ function App() {
       moveToSquareBelow();
 
       setColorArrangement([...colorArrangement]);
-    }, 800);
+    }, 500);
 
     return () => clearInterval(timer);
   }, [
@@ -202,30 +181,32 @@ function App() {
   ]);
 
   return (
-    <GameContext.Provider
-      value={{
-        score,
-        colorArrangement,
-        squareBeingDragged,
-        squareBeingReplaced,
-        handleClick,
-      }}
-    >
-      <div className="app">
-        <Logo />
-        <ScoreBoard />
-        <div className="">
-          <GameBoard />
+    <div className="app">
+      <div className="logo">
+        <img src={logo} alt="" />
+      </div>
+      <ScoreBoard score={score} />
+      <div className="">
+        <div className="game">
+          {colorArrangement.map((candyColor, index) => (
+            <img
+              key={index}
+              src={candyColor}
+              alt={candyColor}
+              data-id={index}
+              draggable={true}
+              onDragOver={(e) => e.preventDefault()}
+              onDragEnter={(e) => e.preventDefault()}
+              onDragLeave={(e) => e.preventDefault()}
+              onDrop={dragDrop}
+              onDragEnd={dragEnd}
+              onDragStart={dragStart}
+            />
+          ))}
         </div>
       </div>
-    </GameContext.Provider>
-  );
-}
-function Logo() {
-  return (
-    <div className="logo btn">
-      <img src={logo} alt="" />
     </div>
   );
 }
+
 export default App;
