@@ -1,9 +1,7 @@
-import red from "../images/red.webp";
 import blue from "../images/blue.webp";
 import orange from "../images/orange.webp";
-import yellow from "../images/yellow.webp";
 import purple from "../images/purple.webp";
-import green from "../images/green.webp";
+
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../App";
 
