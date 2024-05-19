@@ -14,7 +14,10 @@ function Welcome() {
     setStatus((stat) => (stat = "loading"));
   }
   useEffect(function () {
-    console.log(audioElement);
+    function audios() {
+      console.log((audioElement.current.pause = false));
+    }
+    audios();
   }, []);
   return (
     <div className="w-full md:w-1/3 mt-5">
