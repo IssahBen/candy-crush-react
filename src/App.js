@@ -8,9 +8,10 @@ import purple from "./images/purple.webp";
 import green from "./images/green.webp";
 import blank from "./images/blank.png";
 import logo from "./images/logo.png";
-
+import Spinner from "./components/Spinner";
 import ScoreBoard from "./components/ScoreBoard";
 import GameBoard from "./components/GameBoard";
+import Welcome from "./components/Welcome";
 export const GameContext = createContext();
 const width = 8;
 const candyColors = [red, green, orange, purple, blue, yellow];
@@ -19,6 +20,7 @@ function App() {
   const [squareBeingDragged, setSquareBeingDragged] = useState(null);
   const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
   const [compute, setCompute] = useState(false);
+  const [status, setStatus] = useState("welcome");
 
   const [score, setScore] = useState(0);
 
@@ -210,13 +212,16 @@ function App() {
         squareBeingDragged,
         squareBeingReplaced,
         handleClick,
+        setStatus,
       }}
     >
       <div className="app">
         <Logo />
-        <ScoreBoard />
-        <div className="">
-          <GameBoard />
+        {status === "active" && <ScoreBoard />}
+        <div className={`${status === "active" ? "p-24" : ""}`}>
+          {status === "welcome" && <Welcome />}
+          {status === "loading" && <Spinner />}
+          {status === "active" && <GameBoard />}
         </div>
       </div>
     </GameContext.Provider>
