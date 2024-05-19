@@ -14,7 +14,7 @@ function Welcome() {
   }
 
   return (
-    <div className="w-full md:w-1/3 mt-5">
+    <div className="w-full md:w-1/3 mt-5 ">
       <div className={` flex flex-col   bg-white shape p-5   m`}>
         <div className="flex justify-center mb-4 space-x-5 ">
           <img src={red} alt="" className="h-[50px] flash" />

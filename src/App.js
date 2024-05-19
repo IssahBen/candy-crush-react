@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 import logo from "./images/logo.png";
 import Spinner from "./components/Spinner";
@@ -6,6 +6,7 @@ import ScoreBoard from "./components/ScoreBoard";
 import GameBoard from "./components/GameBoard";
 import Welcome from "./components/Welcome";
 import Result from "./components/Result";
+import LeaderBoard from "./components/LeaderBoard";
 export const GameContext = createContext();
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
       }}
     >
       <div className="app">
-        <Logo />
+        {status !== "game" ? <Logo /> : ""}
         {status === "active" && <ScoreBoard />}
         <div
           className={`${
@@ -57,8 +58,9 @@ function App() {
   );
 }
 function Logo() {
+  const { status } = useContext(GameContext);
   return (
-    <div className="logo btn">
+    <div className={`logo  ${status === "ending" ? "flash" : "btn"}`}>
       <img src={logo} alt="" />
     </div>
   );

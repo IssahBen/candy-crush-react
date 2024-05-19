@@ -303,3 +303,20 @@ progress {
     opacity: 0;
   }
 }
+
+.loader {
+  background: linear-gradient(to right, rgb(22, 113, 202) 50%, transparent 50%);
+  animation: spin 1s infinite linear;
+}
+.loader:before {
+  display: block;
+  content: "";
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  background: #222;
+  border-radius: 50%;
+}

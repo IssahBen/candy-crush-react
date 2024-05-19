@@ -200,9 +200,13 @@ function GameBoard() {
     colorArrangement,
     setColorArrangement,
   ]);
-
+  window.addEventListener("DOMContentLoaded", (event) => {
+    audioElement.current.volume = 0.2;
+    audioElement.current.pause = "false";
+    console.log(audioElement);
+  });
   return (
-    <div className="game  rounded-2xl shadow mt-5 bg-gray-200 bounce-in-right ">
+    <div className="game  rounded-2xl shadow mt-5 bg-[#2B2730] bounce-in-right ">
       {colorArrangement.map((candyColor, index) => (
         <div
           key={index}

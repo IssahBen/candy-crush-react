@@ -26,6 +26,12 @@ function Spinner() {
 
     [loader, setStatus, setLoader]
   );
+  window.addEventListener("DOMContentLoaded", (event) => {
+    audioElement.current.volume = 0.2;
+    audioElement.current.pause = "false";
+    console.log(audioElement);
+  });
+
   return (
     <div className="">
       <div className="flex justify-center w-full items-center mt-12">
@@ -39,7 +45,7 @@ function Spinner() {
         </progress>
         <audio
           ref={audioElement}
-          autoPlay="true"
+          autoPlay={"true"}
           loop={true}
           src="https://www.bensound.com/bensound-music/bensound-epic.mp3"
         ></audio>
