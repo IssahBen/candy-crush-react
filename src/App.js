@@ -42,7 +42,11 @@ function App() {
       <div className="app">
         <Logo />
         {status === "active" && <ScoreBoard />}
-        <div className={`${status === "active" ? "p-1" : ""}`}>
+        <div
+          className={`${
+            status === "active" ? "p-1" : ""
+          } w-full flex justify-center`}
+        >
           {status === "welcome" && <Welcome />}
           {status === "loading" && <Spinner />}
           {status === "active" && <GameBoard />}

@@ -26,7 +26,7 @@ function Spinner() {
     [loader, setStatus, setLoader]
   );
   return (
-    <>
+    <div className="">
       <div className="flex justify-center w-full items-center mt-12">
         <img src={purple} alt="" className="spin" />
         <img src={orange} alt="" className="bounce2" />
@@ -37,7 +37,7 @@ function Spinner() {
           {loader}
         </progress>
       </div>
-    </>
+    </div>
   );
 }
 
