@@ -1,31 +1,33 @@
-import { useContext, useEffect } from "react";
-import { GameContext } from "../App";
-import blank from "../images/blank.png";
-import red from "../images/red.webp";
-import blue from "../images/blue.webp";
-import orange from "../images/orange.webp";
-import yellow from "../images/yellow.webp";
-import purple from "../images/purple.webp";
-import green from "../images/green.webp";
-import { useRef } from "react";
-
+import { useState, useEffect, createContext } from "react";
+import red from "./images/red.webp";
+import blue from "./images/blue.webp";
+import orange from "./images/orange.webp";
+import yellow from "./images/yellow.webp";
+import purple from "./images/purple.webp";
+import green from "./images/green.webp";
+import blank from "./images/blank.png";
+import logo from "./images/logo.png";
+import Spinner from "./components/Spinner";
+import ScoreBoard from "./components/ScoreBoard";
+import GameBoard from "./components/GameBoard";
+import Welcome from "./components/Welcome";
+import Result from "./components/Result";
+export const GameContext = createContext();
 const width = 8;
 const candyColors = [red, green, orange, purple, blue, yellow];
+function App() {
+  const [colorArrangement, setColorArrangement] = useState([]);
+  const [squareBeingDragged, setSquareBeingDragged] = useState(null);
+  const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
+  const [compute, setCompute] = useState(false);
+  const [status, setStatus] = useState("welcome");
 
-function GameBoard() {
-  const {
-    colorArrangement,
-    squareBeingDragged,
-    squareBeingReplaced,
-    setScore,
-    setSquareBeingDragged,
-    setSquareBeingReplaced,
-    compute,
-    setCompute,
-    setColorArrangement,
-  } = useContext(GameContext);
-
-  const audioElement = useRef(null);
+  const [score, setScore] = useState(0);
+  function gameOver() {
+    setStatus((stat) => "game");
+    setScore(0);
+    console.log("gameover");
+  }
   // eslint-disable-next-line
   function checkFor3Col() {
     for (let i = 0; i <= 47; i++) {
@@ -163,7 +165,6 @@ function GameBoard() {
       setSquareBeingReplaced(null);
     }
   }
-  // eslint-disable-next-line
   function createBoard() {
     const randomColorArrangement = [];
     for (let i = 0; i < width * width; i++) {
@@ -173,7 +174,6 @@ function GameBoard() {
     }
     setColorArrangement((arr) => (arr = [...randomColorArrangement]));
   }
-  // eslint-disable-next-line
   useEffect(() => createBoard(), []);
   useEffect(() => {
     console.log("mounted");
@@ -198,42 +198,40 @@ function GameBoard() {
     checkFor4Row,
     moveToSquareBelow,
     colorArrangement,
-    setColorArrangement,
   ]);
 
   return (
-    <div className="game  rounded-2xl shadow mt-5 bg-gray-200 bounce-in-right ">
-      {colorArrangement.map((candyColor, index) => (
-        <div
-          key={index}
-          className={`image ${
-            Number(squareBeingDragged?.getAttribute("data-id")) === index
-              ? "dragged pulse"
-              : ""
-          } ${
-            Number(squareBeingReplaced?.getAttribute("data-id")) === index
-              ? "replaced"
-              : ""
-          }`}
-        >
-          {" "}
-          <img
-            key={index}
-            src={candyColor}
-            alt={candyColor}
-            data-id={index}
-            onClick={(e) => handleClick(e)}
-          />
+    <GameContext.Provider
+      value={{
+        score,
+        colorArrangement,
+        squareBeingDragged,
+        squareBeingReplaced,
+        handleClick,
+        setStatus,
+        setScore,
+        gameOver,
+        setCompute,
+      }}
+    >
+      <div className="app">
+        <Logo />
+        {status === "active" && <ScoreBoard />}
+        <div className={`${status === "active" ? "p-24" : ""}`}>
+          {status === "welcome" && <Welcome />}
+          {status === "loading" && <Spinner />}
+          {status === "active" && <GameBoard />}
+          {status === "game" && <Result />}
         </div>
-      ))}
-      <audio
-        ref={audioElement}
-        autoPlay="true"
-        loop={true}
-        src="https://www.bensound.com/bensound-music/bensound-badass.mp3"
-      ></audio>
+      </div>
+    </GameContext.Provider>
+  );
+}
+function Logo() {
+  return (
+    <div className="logo btn">
+      <img src={logo} alt="" />
     </div>
   );
 }
-
-export default GameBoard;
+export default App;

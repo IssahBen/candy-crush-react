@@ -5,22 +5,24 @@ import yellow from "../images/yellow.webp";
 import purple from "../images/purple.webp";
 
 import { GameContext } from "../App";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 function Welcome() {
   const { setStatus } = useContext(GameContext);
+  const audioElement = useRef(null);
+
   function handleStart() {
     setStatus((stat) => (stat = "loading"));
   }
   return (
     <div className={` flex flex-col   bg-white shape p-5 `}>
-      <div className="flex justify-center mb-4">
-        <img src={red} alt="" className="h-[50px] shake" />
-        <img src={orange} alt="" className="h-[50px]  " />
-        <img src={yellow} alt="" className="h-[50px]  " />
+      <div className="flex justify-center mb-4 space-x-5">
+        <img src={red} alt="" className="h-[50px] flash" />
+        <img src={orange} alt="" className="h-[50px]  gelatine" />
+        <img src={yellow} alt="" className="h-[50px]  pulse" />
         <img src={purple} alt="" className="h-[50px]  shake" />
       </div>
       <div className="flex justify-center mb-5">
-        <h1 className="font-bold text-5xl text-white font-sans">
+        <h1 className="font-bold text-4xl text-white font-mono">
           Welcome to CandyCrusher!
         </h1>
       </div>
@@ -39,6 +41,13 @@ function Welcome() {
           Start Game
         </button>
       </div>
+      <audio
+        volume="0.4"
+        ref={audioElement}
+        autoPlay="true"
+        loop={true}
+        src="https://www.bensound.com/bensound-music/bensound-epic.mp3"
+      ></audio>
     </div>
   );
 }

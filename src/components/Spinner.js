@@ -12,17 +12,18 @@ function Spinner() {
     function () {
       const loading = function () {
         setLoader((loader) => (loader += 12));
-        if (loader > 100) {
-          console.log(loader);
-          setLoader(0);
-          setStatus("active");
-        }
       };
+      if (loader > 100) {
+        setLoader(0);
+        console.log(9);
+        setStatus("active");
+        return () => clearInterval(loading);
+      }
       setInterval(loading, 1000);
       return () => clearInterval(loading);
     },
 
-    [loader, setStatus]
+    [loader, setStatus, setLoader]
   );
   return (
     <>
