@@ -2,11 +2,12 @@ import blue from "../images/blue.webp";
 import orange from "../images/orange.webp";
 import purple from "../images/purple.webp";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { GameContext } from "../App";
 
 function Spinner() {
   const [loader, setLoader] = useState(0);
+  const audioElement = useRef(null);
   const { setStatus } = useContext(GameContext);
   useEffect(
     function () {
@@ -36,6 +37,12 @@ function Spinner() {
         <progress value={loader} max="100">
           {loader}
         </progress>
+        <audio
+          ref={audioElement}
+          autoPlay="true"
+          loop={true}
+          src="https://www.bensound.com/bensound-music/bensound-epic.mp3"
+        ></audio>
       </div>
     </div>
   );

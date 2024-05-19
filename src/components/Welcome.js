@@ -5,20 +5,14 @@ import yellow from "../images/yellow.webp";
 import purple from "../images/purple.webp";
 
 import { GameContext } from "../App";
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 function Welcome() {
   const { setStatus } = useContext(GameContext);
-  const audioElement = useRef(null);
 
   function handleStart() {
     setStatus((stat) => (stat = "loading"));
   }
-  useEffect(function () {
-    function audios() {
-      console.log((audioElement.current.pause = false));
-    }
-    audios();
-  }, []);
+
   return (
     <div className="w-full md:w-1/3 mt-5">
       <div className={` flex flex-col   bg-white shape p-5   m`}>
@@ -49,12 +43,6 @@ function Welcome() {
             Start Game
           </button>
         </div>
-        <audio
-          ref={audioElement}
-          autoPlay="true"
-          loop={true}
-          src="https://www.bensound.com/bensound-music/bensound-epic.mp3"
-        ></audio>
       </div>
     </div>
   );
