@@ -6,7 +6,7 @@ import ScoreBoard from "./components/ScoreBoard";
 import GameBoard from "./components/GameBoard";
 import Welcome from "./components/Welcome";
 import Result from "./components/Result";
-import LeaderBoard from "./components/LeaderBoard";
+
 export const GameContext = createContext();
 
 function App() {
