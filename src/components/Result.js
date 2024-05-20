@@ -5,7 +5,7 @@ import purple from "../images/purple.webp";
 import { GameContext } from "../App";
 import { useContext, useEffect, useRef, useState } from "react";
 import LeaderBoard from "./LeaderBoard";
-const URL = "http://localhost:3000/api/v1/scores";
+const URL = "https://candyapi-8f14641708f8.herokuapp.com/api/v1/scores";
 function Result() {
   const { score, setScore, setStatus } = useContext(GameContext);
   const [scores, setScores] = useState([]);

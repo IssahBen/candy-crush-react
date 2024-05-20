@@ -1,5 +1,3 @@
-import { useContext, useEffect, useState } from "react";
-import { GameContext } from "../App";
 import podium from "../images/podium.png";
 import defaultpic from "../images/quagmire.jpeg";
 
@@ -19,8 +17,6 @@ function LeaderBoard({ scores, isLoading }) {
 }
 
 function BoardItem({ score, scores }) {
-  var rank = 0;
-
   return (
     <div className="flex items-center justify-center space-x-5  bg-white mt-1 px-5 py-1 rounded-3xl divide-x  ">
       <img src={defaultpic} alt="" className="h-8 rounded-3xl pulse" />
