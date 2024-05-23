@@ -99,13 +99,7 @@ function Result() {
       />
       <div className="flex    flex-col w-96 bg-black rounded-3xl p-8 mt-5   shadow">
         <LeaderBoard isLoading={isLoading} scores={scores} />
-        <audio
-          volume="0.4"
-          ref={audioElement}
-          autoPlay="true"
-          loop={true}
-          src="https://www.bensound.com/bensound-music/bensound-moose.mp3"
-        ></audio>
+
         <div className="w-full flex flex-col justify-center items-center text-3xl text-pink-500 tracking-widest">
           <h1>CandyCrusher!</h1>
           <p>Great 🎉🎉🎉</p>
@@ -138,6 +132,12 @@ function Result() {
           </button>
         </div>
       </div>
+      <audio
+        ref={audioElement}
+        autoPlay="true"
+        loop={true}
+        src="https://www.bensound.com/bensound-music/bensound-badass.mp3"
+      ></audio>
     </div>
   );
 }

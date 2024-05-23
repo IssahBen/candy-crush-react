@@ -100,7 +100,7 @@ function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                type=""
+                type="email"
                 placeholder="mail@gmail.com"
               />
             </div>

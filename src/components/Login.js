@@ -72,7 +72,7 @@ function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                type=""
+                type="email"
                 placeholder="mail@gmail.com"
               />
             </div>
@@ -84,7 +84,7 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                type=""
+                type="password"
                 placeholder="Enter your password"
               />
             </div>
