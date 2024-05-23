@@ -48,7 +48,7 @@ function Welcome() {
         ref={audioElement}
         autoPlay="true"
         loop={true}
-        src="https://www.bensound.com/bensound-music/bensound-esper.mp3"
+        src="https://www.bensound.com/bensound-music/bensound-badass.mp3"
       ></audio>
     </div>
   );
