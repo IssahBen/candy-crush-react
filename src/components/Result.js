@@ -32,7 +32,6 @@ function Result() {
           },
         }
       );
-      const data = await res.json();
 
       if (!res.ok) {
         throw Error;
@@ -45,7 +44,7 @@ function Result() {
   async function createScore(obj) {
     try {
       console.log(obj);
-      const res = await fetch(`${URL}`, {
+      await fetch(`${URL}`, {
         method: "Post",
         body: JSON.stringify(obj),
         headers: {
