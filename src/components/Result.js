@@ -89,7 +89,11 @@ function Result() {
     destroySession();
     HandleQuit();
   }
-
+  window.addEventListener("DOMContentLoaded", (event) => {
+    audioElement.current.volume = 0.2;
+    audioElement.current.pause = "false";
+    console.log(audioElement);
+  });
   return (
     <div className="relative">
       <img
