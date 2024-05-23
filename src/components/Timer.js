@@ -3,9 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../App";
 function Timer() {
   const { setStatus } = useContext(GameContext);
-  const [secondsRemaining, setSecondsRemaining] = useState(5);
+  const [secondsRemaining, setSecondsRemaining] = useState(180);
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
+
   useEffect(
     function () {
       if (secondsRemaining === 0) {

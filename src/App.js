@@ -6,6 +6,8 @@ import ScoreBoard from "./components/ScoreBoard";
 import GameBoard from "./components/GameBoard";
 import Welcome from "./components/Welcome";
 import Result from "./components/Result";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 export const GameContext = createContext();
 
@@ -15,6 +17,9 @@ function App() {
   const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
   const [compute, setCompute] = useState(false);
   const [status, setStatus] = useState("welcome");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const [score, setScore] = useState(0);
   function gameOver() {
@@ -23,6 +28,13 @@ function App() {
     console.log("gameover");
   }
 
+  function HandleQuit() {
+    setStatus("welcome");
+    setScore(0);
+    setToken("");
+    setEmail("");
+    setPassword("");
+  }
   return (
     <GameContext.Provider
       value={{
@@ -37,18 +49,28 @@ function App() {
         setSquareBeingDragged,
         setSquareBeingReplaced,
         setColorArrangement,
+        email,
+        setEmail,
+        password,
+        setPassword,
         compute,
+        setToken,
+        HandleQuit,
+        token,
       }}
     >
       <div className="app">
         {status !== "game" ? <Logo /> : ""}
         {status === "active" && <ScoreBoard />}
+
         <div
           className={`${
             status === "active" ? "p-1" : ""
           } w-full flex justify-center`}
         >
           {status === "welcome" && <Welcome />}
+          {status === "login" && <Login />}
+          {status === "signup" && <SignUp />}
           {status === "loading" && <Spinner />}
           {status === "active" && <GameBoard />}
           {status === "game" && <Result />}

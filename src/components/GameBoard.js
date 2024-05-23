@@ -188,7 +188,7 @@ function GameBoard() {
       moveToSquareBelow();
 
       setColorArrangement([...colorArrangement]);
-    }, 800);
+    }, 500);
 
     return () => clearInterval(timer);
   }, [

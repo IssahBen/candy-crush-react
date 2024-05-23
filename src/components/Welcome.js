@@ -10,7 +10,7 @@ function Welcome() {
   const { setStatus } = useContext(GameContext);
 
   function handleStart() {
-    setStatus((stat) => (stat = "loading"));
+    setStatus((stat) => (stat = "login"));
   }
 
   return (
