@@ -12,11 +12,7 @@ function Welcome() {
   function handleStart() {
     setStatus((stat) => (stat = "login"));
   }
-  window.addEventListener("DOMContentLoaded", (event) => {
-    audioElement.current.volume = 0.2;
-    audioElement.current.pause = "false";
-    console.log(audioElement);
-  });
+
   return (
     <div className="w-full md:w-1/3 mt-5 ">
       <div className={` flex flex-col   bg-white shape p-5   m`}>
