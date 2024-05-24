@@ -154,7 +154,7 @@ function GameBoard() {
       setSquareBeingDragged(null);
       setSquareBeingReplaced(null);
       setCompute(false);
-      audioElement.current.volume = 0.5;
+      audioElement.current.volume = 0.2;
       CorrectMoveEffectElement.current.play();
       CorrectMoveEffectElement.current.volume = 1;
       console.log("correct move");
@@ -162,7 +162,7 @@ function GameBoard() {
       colorArrangement[replacedId] = squareBeingReplaced?.getAttribute("src");
       colorArrangement[draggedId] = squareBeingDragged?.getAttribute("src");
       setColorArrangement((colors) => (colors = [...colorArrangement]));
-      audioElement.current.volume = 0.5;
+      audioElement.current.volume = 0.2;
       WrongMoveEffectElement.current.volume = 1;
       WrongMoveEffectElement.current.play();
 
