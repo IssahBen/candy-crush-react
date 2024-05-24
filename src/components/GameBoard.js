@@ -154,12 +154,16 @@ function GameBoard() {
       setSquareBeingDragged(null);
       setSquareBeingReplaced(null);
       setCompute(false);
+      audioElement.current.volume = 0.5;
       CorrectMoveEffectElement.current.play();
+      CorrectMoveEffectElement.current.volume = 1;
       console.log("correct move");
     } else {
       colorArrangement[replacedId] = squareBeingReplaced?.getAttribute("src");
       colorArrangement[draggedId] = squareBeingDragged?.getAttribute("src");
       setColorArrangement((colors) => (colors = [...colorArrangement]));
+      audioElement.current.volume = 0.5;
+      WrongMoveEffectElement.current.volume = 1;
       WrongMoveEffectElement.current.play();
 
       setCompute(false);
@@ -233,7 +237,6 @@ function GameBoard() {
       <audio
         ref={audioElement}
         autoPlay="true"
-        volume="0.5"
         loop={true}
         src="https://www.bensound.com/bensound-music/bensound-badass.mp3"
       ></audio>
