@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: { colors: { red: "hsl(354, 84%, 57%)" } },
     fontFamily: {
-      sans: ["YellowTail", "sans-serif"],
+      sans: ["Poetsen One", "sans-serif"],
     },
   },
   plugins: [],
