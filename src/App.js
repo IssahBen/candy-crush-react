@@ -94,7 +94,7 @@ function PushLogo() {
   return (
     <img
       src={Push}
-      className="absolute h-[200px] left-0 top-[-80px] "
+      className=" md:block hidden absolute h-[200px] left-0 top-[-80px] "
       alt="logo"
     ></img>
   );
