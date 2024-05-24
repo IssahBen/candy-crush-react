@@ -18,7 +18,6 @@ function Timer() {
         if (secondsRemaining !== 0) {
           setSecondsRemaining((seconds) => (seconds -= 1));
         }
-        console.log(2);
       }, 1000);
 
       return () => clearInterval(id);
