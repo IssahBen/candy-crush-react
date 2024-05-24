@@ -26,7 +26,8 @@ function GameBoard() {
   } = useContext(GameContext);
 
   const audioElement = useRef(null);
-  const EffectElement = useRef(null);
+  const CorrectMoveEffectElement = useRef(null);
+  const WrongMoveEffectElement = useRef(null);
   // eslint-disable-next-line
   function checkFor3Col() {
     for (let i = 0; i <= 47; i++) {
@@ -153,12 +154,13 @@ function GameBoard() {
       setSquareBeingDragged(null);
       setSquareBeingReplaced(null);
       setCompute(false);
-      EffectElement.current.play();
+      CorrectMoveEffectElement.current.play();
       console.log("correct move");
     } else {
       colorArrangement[replacedId] = squareBeingReplaced?.getAttribute("src");
       colorArrangement[draggedId] = squareBeingDragged?.getAttribute("src");
       setColorArrangement((colors) => (colors = [...colorArrangement]));
+      WrongMoveEffectElement.current.play();
 
       setCompute(false);
       setSquareBeingDragged(null);
@@ -235,7 +237,11 @@ function GameBoard() {
         src="https://www.bensound.com/bensound-music/bensound-badass.mp3"
       ></audio>
       <audio
-        ref={EffectElement}
+        ref={CorrectMoveEffectElement}
+        src="https://cdn.freesound.org/previews/203/203380_3569783-lq.mp3"
+      ></audio>
+      <audio
+        ref={WrongMoveEffectElement}
         src="https://cdn.freesound.org/previews/317/317750_3905081-lq.mp3"
       ></audio>
     </div>
