@@ -7,10 +7,11 @@ function LeaderBoard({ scores, isLoading }) {
   const newScores = scores.map((item) =>
     item.highestscore === null && item.email === email
       ? { email: email, highestscore: { score: score } }
-      : item.highestscore?.score < score
+      : item?.highestscore.score < score
       ? { email: email, highestscore: { score: score } }
       : item
   );
+
   // useEffect(
   //   function () {
   //     for (let i = 0; i < scores.size; i++) {
