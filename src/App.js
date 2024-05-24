@@ -59,7 +59,7 @@ function App() {
         token,
       }}
     >
-      <div className="app">
+      <div className="app relative">
         {status !== "game" ? <Logo /> : ""}
         {status === "active" && <ScoreBoard />}
 
@@ -82,7 +82,7 @@ function App() {
 function Logo() {
   const { status } = useContext(GameContext);
   return (
-    <div className={`logo  ${status === "ending" ? "flash" : "btn"}`}>
+    <div className={`logo  ${status === "ending" ? "flash" : "gelatine"}`}>
       <img src={logo} alt="" />
     </div>
   );
