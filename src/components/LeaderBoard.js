@@ -39,7 +39,9 @@ function LeaderBoard({ scores, isLoading }) {
 
 function BoardItem({ item, newScores }) {
   const rank = newScores.reduce((acc, cur) => {
-    return cur.highestscore.score > item.highestscore.score ? (acc += 1) : acc;
+    return cur.highestscore?.score > item.highestscore?.score
+      ? (acc += 1)
+      : acc;
   }, 1);
   return (
     <div
@@ -53,7 +55,7 @@ function BoardItem({ item, newScores }) {
     >
       <img src={defaultpic} alt="" className="h-8 rounded-3xl pulse" />
       <p className="font-bold  text-black text-md tracking-wide">
-        {item.email?.slice(0, 8)}:{item.highestscore.score}pts
+        {item.email?.slice(0, 8)}:{item.highestscore?.score}pts
       </p>
       <h1 className="text-red">Rank :{rank}</h1>
     </div>
