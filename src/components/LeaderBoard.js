@@ -44,8 +44,12 @@ function BoardItem({ item, newScores }) {
   return (
     <div
       className={`${
-        rank === 1 ? "bg-purple-500 " : rank === 2 ? "bg-orange-500 " : ""
-      } flex items-center justify-center space-x-5  bg-white mt-1 px-5 py-1 rounded-3xl divide-x  `}
+        rank === 1
+          ? "bg-purple-500 "
+          : rank === 2
+          ? "bg-orange-500 "
+          : "bg-white"
+      } flex items-center justify-center space-x-5  mt-1 px-5 py-1 rounded-3xl divide-x  `}
     >
       <img src={defaultpic} alt="" className="h-8 rounded-3xl pulse" />
       <p className="font-bold  text-black text-md tracking-wide">
