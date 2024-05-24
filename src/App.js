@@ -92,7 +92,11 @@ function Logo() {
 
 function PushLogo() {
   return (
-    <img src={Push} className="absolute h-[200px] left-0 top-[-80px] "></img>
+    <img
+      src={Push}
+      className="absolute h-[200px] left-0 top-[-80px] "
+      alt="logo"
+    ></img>
   );
 }
 export default App;
