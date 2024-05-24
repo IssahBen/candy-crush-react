@@ -238,12 +238,13 @@ function GameBoard() {
       ></audio>
       <audio
         ref={CorrectMoveEffectElement}
-        src="https://cdn.freesound.org/previews/203/203380_3569783-lq.mp3"
-      ></audio>
-      <audio
-        ref={WrongMoveEffectElement}
-        src="https://cdn.freesound.org/previews/317/317750_3905081-lq.mp3"
-      ></audio>
+        src="https://cdn.freesound.org/previews/260/260432_4855185-lq.mp3"
+      >
+        <audio
+          ref={WrongMoveEffectElement}
+          src="https://cdn.freesound.org/previews/203/203380_3569783-lq.mp3"
+        ></audio>
+      </audio>
     </div>
   );
 }
