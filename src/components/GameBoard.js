@@ -233,6 +233,7 @@ function GameBoard() {
       <audio
         ref={audioElement}
         autoPlay="true"
+        volume="0.5"
         loop={true}
         src="https://www.bensound.com/bensound-music/bensound-badass.mp3"
       ></audio>
