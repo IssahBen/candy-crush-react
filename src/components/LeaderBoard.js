@@ -5,9 +5,9 @@ function LeaderBoard({ scores, isLoading }) {
   const { score, email } = useContext(GameContext);
   // const [newScores, setNewScores] = useState([]);
   const newScores = scores.map((item) =>
-    item.highestscore === null && item.email === email
+    item.highestscore === null
       ? { email: email, highestscore: { score: score } }
-      : item?.highestscore.score < score
+      : item.highestscore.score < score
       ? { email: email, highestscore: { score: score } }
       : item
   );
