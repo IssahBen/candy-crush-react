@@ -7,7 +7,7 @@ function LeaderBoard({ scores, isLoading }) {
   const newScores = scores.map((item) =>
     item.highestscore === null
       ? { email: email, highestscore: { score: score } }
-      : item.highestscore.score < score
+      : item.highestscore.score < score && item.email === email
       ? { email: email, highestscore: { score: score } }
       : item
   );
