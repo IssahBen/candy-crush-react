@@ -38,7 +38,7 @@ function LeaderBoard({ scores, isLoading }) {
 }
 
 function BoardItem({ item, newScores }) {
-  let rank = newScores.reduce((acc, cur) => {
+  const rank = newScores.reduce((acc, cur) => {
     return cur.highestscore.score > item.highestscore.score ? (acc += 1) : acc;
   }, 1);
   return (
