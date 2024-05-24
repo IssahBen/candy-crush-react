@@ -11,6 +11,8 @@ function LeaderBoard({ scores, isLoading }) {
       ? { email: email, highestscore: { score: score } }
       : item
   );
+  console.log(scores);
+  console.log(newScores);
 
   // useEffect(
   //   function () {
