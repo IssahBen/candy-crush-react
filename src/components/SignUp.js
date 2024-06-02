@@ -55,24 +55,19 @@ function SignUp() {
 
   useEffect(ResetParams, [setEmail, setPassword]);
   return (
-    <div className="px-10 flex w-full lg:w-1/2 justify-center items-center shadow bg-white rounded-[8px]">
+    <div className="px-10 flex w-full lg:w-1/2 justify-center items-center  bg-white rounded-[8px]">
       <div className="relative flex items-center">
         <div className="w-full z-10">
           <div className="text-center">
-            <h2 className=" pulse mt-6 text-3xl font-bold text-gray-900">
+            <h2 className="  mt-6 text-2xl font-bold text-gray-900">
               Become a Crusher! 😃
             </h2>
             <p className="mt-5 text-md text-gray-600">Please sign up to play</p>
-            <div className="flex space-x-1 justify-center">
-              <img src={orange} alt="" className="h-5  spin" />
-              <img src={yellow} alt="" className="h-5 spin" />
-              <img src={purple} alt="" className="h-5 spin" />
-            </div>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSignUp}>
             <input type="hidden" name="remember" value="true" />
             <div className="relative">
-              <div className="absolute right-0 mt-4">
+              <div className="absolute  top-[-20px] right-0 mt-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={`h-6 w-6 ${
@@ -99,7 +94,7 @@ function SignUp() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                className=" rounded-lg w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="email"
                 placeholder="mail@gmail.com"
               />
@@ -112,7 +107,7 @@ function SignUp() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                className=" rounded-lg w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="password"
                 placeholder="Enter your password"
               />
@@ -120,7 +115,7 @@ function SignUp() {
             <div className="mt-8 content-center">
               <label
                 className={`text-sm  pulse font-bold ${
-                  password !== passwordConfirmation
+                  password !== passwordConfirmation || password === ""
                     ? "text-red"
                     : "text-green-700"
                 } tracking-wide`}
@@ -131,7 +126,7 @@ function SignUp() {
                 required
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmatio(e.target.value)}
-                className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                className=" rounded-lg w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="password"
                 placeholder="Confirm password"
               />
@@ -140,16 +135,7 @@ function SignUp() {
               <div className="flex items-center"></div>
             </div>
             <div>
-              <button
-                type="submit"
-                className={`w-full  flip flex justify-center shadow  ${
-                  email && password === passwordConfirmation
-                    ? "bg-green-500"
-                    : "bg-red"
-                } text-gray-100 p-1 mb-5  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300`}
-              >
-                Register
-              </button>
+              <button class="neu-button">Register</button>
             </div>
           </form>
         </div>

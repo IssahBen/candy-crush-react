@@ -37,11 +37,11 @@ function Login() {
   }
   useEffect(ResetParams, [setEmail, setPassword]);
   return (
-    <div className="px-10 flex w-full lg:w-1/2 justify-center items-center shadow bg-white rounded-[8px]">
+    <div className="px-10 flex w-full lg:w-1/2 justify-center items-center  bg-white rounded-[8px]">
       <div className="relative flex items-center">
         <div className="w-full z-10">
           <div className="text-center">
-            <h2 className=" pulse mt-6 text-3xl font-bold text-gray-900">
+            <h2 className="  mt-2 text-3xl font-bold text-gray-700">
               Welcome Crusher!
             </h2>
             <p className="mt-2 text-sm text-gray-600">Please sign in to play</p>
@@ -49,29 +49,13 @@ function Login() {
           <form className="mt-8 space-y-6" onSubmit={handlePlay}>
             <input type="hidden" name="remember" value="true" />
             <div className="relative">
-              <div className="absolute right-0 mt-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-green-500 spin"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-              </div>
               <label className=" text-sm font-bold text-gray-700 tracking-wide">
                 Email
               </label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                className=" rounded-lg w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="email"
                 placeholder="mail@gmail.com"
               />
@@ -83,7 +67,7 @@ function Login() {
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                className=" rounded-lg w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="password"
                 placeholder="Enter your password"
               />
@@ -92,11 +76,14 @@ function Login() {
               <div className="flex items-center"></div>
             </div>
             <div>
-              <button
+              {/* <button
                 type="submit"
                 className="w-full  flip flex justify-center shadow  bg-red text-gray-100 p-1 mb-5  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
               >
                 Play
+              </button> */}
+              <button class=" ebtn  bg-pink-500 neo-pop-tilted-button">
+                <span className="text-white">Play</span>
               </button>
             </div>
           </form>

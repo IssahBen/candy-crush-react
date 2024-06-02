@@ -14,20 +14,14 @@ function Welcome() {
   }
 
   return (
-    <div className="w-full md:w-1/3 mt-5 ">
-      <div className={` flex flex-col   bg-white shape p-5   m`}>
-        <div className="flex justify-center mb-4 space-x-5 ">
-          <img src={red} alt="" className="h-[50px] flash" />
-          <img src={orange} alt="" className="h-[50px]  gelatine" />
-          <img src={yellow} alt="" className="h-[50px]  pulse" />
-          <img src={purple} alt="" className="h-[50px]  shake" />
-        </div>
+    <div className="w-full md:w-1/3  ">
+      <div className={` flex flex-col   bg-white  p-5   `}>
         <div className="flex justify-center mb-5">
-          <h1 className="font-bold text-4xl text-white font-mono">
+          <h1 className="font-bold text-4xl text-pink-700 font-mono">
             Welcome to CandyCrusher!
           </h1>
         </div>
-        <div className="text-cool_gray text-xl tracking-widest text-center text-red font-mono">
+        <div className="text-cool_gray text-xl tracking-wide text-center text-pink-600 font-mono">
           <p>
             Dear Sweet Player, Get ready to embark on a delightful journey
             through the world of Candy Crush! Whether you're a new player or a
@@ -35,12 +29,23 @@ function Welcome() {
             community.
           </p>
         </div>
-        <div className="flex flex-col justify-center  items-center mb-4">
-          <button
-            className="rounded-xl bg-green-500 p-5 text-xl flip"
-            onClick={handleStart}
-          >
-            Start Game
+        <div className="flex flex-col justify-center  items-center mt-5">
+          <button class="uiverse" onClick={handleStart}>
+            <div class="wrapper">
+              <span>Start</span>
+              <div class="circle circle-12"></div>
+              <div class="circle circle-11"></div>
+              <div class="circle circle-10"></div>
+              <div class="circle circle-9"></div>
+              <div class="circle circle-8"></div>
+              <div class="circle circle-7"></div>
+              <div class="circle circle-6"></div>
+              <div class="circle circle-5"></div>
+              <div class="circle circle-4"></div>
+              <div class="circle circle-3"></div>
+              <div class="circle circle-2"></div>
+              <div class="circle circle-1"></div>
+            </div>
           </button>
         </div>
       </div>

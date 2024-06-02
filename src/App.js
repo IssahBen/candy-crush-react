@@ -1,6 +1,6 @@
 import { useState, createContext, useContext } from "react";
 
-import logo from "./images/logo.png";
+import logo from "./images/house.png";
 import Spinner from "./components/Spinner";
 import ScoreBoard from "./components/ScoreBoard";
 import GameBoard from "./components/GameBoard";
@@ -62,7 +62,7 @@ function App() {
     >
       <div className="app relative">
         <PushLogo />
-        {status !== "game" ? <Logo /> : ""}
+        {status === "game" || status === "signup" ? "" : <Logo />}
         {status === "active" && <ScoreBoard />}
 
         <div
@@ -84,8 +84,8 @@ function App() {
 function Logo() {
   const { status } = useContext(GameContext);
   return (
-    <div className={`logo  ${status === "ending" ? "flash" : "gelatine"}`}>
-      <img src={logo} alt="" />
+    <div className={` `}>
+      <img src={logo} alt="" className="w-[200px] h-[250px] pt-5" />
     </div>
   );
 }
