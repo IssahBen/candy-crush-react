@@ -101,7 +101,7 @@ function Result() {
         alt=""
         className="absolute top-[25px] left-[120px] h-40 -z-5 bounce1"
       />
-      <div className="flex    flex-col w-96 bg-black rounded-3xl p-8 mt-5   shadow">
+      <div className="flex    flex-col w-96 leaderBoard rounded-3xl p-8 mt-5   shadow">
         <LeaderBoard isLoading={isLoading} scores={scores} />
 
         <div className="w-full flex flex-col justify-center items-center text-3xl text-pink-500 tracking-widest">

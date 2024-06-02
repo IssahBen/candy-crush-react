@@ -11,6 +11,8 @@ function LeaderBoard({ scores, isLoading }) {
       ? { email: email, highestscore: { score: score } }
       : item
   );
+  console.log(scores);
+  console.log(newScores);
 
   // useEffect(
   //   function () {
@@ -29,7 +31,7 @@ function LeaderBoard({ scores, isLoading }) {
 
   return (
     <div className="w-full relative   flex flex-col justify-center items-center mb-8    h-72 overflow-auto divide-y">
-      <div className="flex flex-col overflow-scroll absolute h-44 bg-black">
+      <div className="flex flex-col overflow-scroll absolute h-44 leaderBoard">
         {newScores.map((item) => (
           <BoardItem item={item} newScores={newScores} key={item.email} />
         ))}

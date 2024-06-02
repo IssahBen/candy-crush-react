@@ -8,7 +8,6 @@ import Welcome from "./components/Welcome";
 import Result from "./components/Result";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import Push from "./images/push2.png";
 
 export const GameContext = createContext();
 
@@ -61,7 +60,6 @@ function App() {
       }}
     >
       <div className="app relative">
-        <PushLogo />
         {status === "game" || status === "signup" ? "" : <Logo />}
         {status === "active" && <ScoreBoard />}
 
@@ -85,18 +83,15 @@ function Logo() {
   const { status } = useContext(GameContext);
   return (
     <div className={` `}>
-      <img src={logo} alt="" className="w-[200px] h-[250px] pt-5" />
+      <img
+        src={logo}
+        alt=""
+        className={`${
+          status !== "game" ? "w-[200px] h-[250px] pt-5" : "w-[80] h-[100]"
+        }`}
+      />
     </div>
   );
 }
 
-function PushLogo() {
-  return (
-    <img
-      src={Push}
-      className=" md:block hidden absolute h-[200px] left-0 top-[-80px] "
-      alt="logo"
-    ></img>
-  );
-}
 export default App;

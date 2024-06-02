@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import orange from "../images/orange.webp";
-import yellow from "../images/yellow.webp";
-import purple from "../images/purple.webp";
+
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../App";
 const URL = "https://candyapi-8f14641708f8.herokuapp.com/api/v1/signup";

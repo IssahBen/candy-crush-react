@@ -210,7 +210,7 @@ function GameBoard() {
   ]);
 
   return (
-    <div className="game  rounded-2xl shadow mt-5 bg-[#2B2730] bounce-in-right ">
+    <div className="game  rounded-2xl shadow  bg-[#2B2730] bounce-in-right ">
       {colorArrangement.map((candyColor, index) => (
         <div
           key={index}

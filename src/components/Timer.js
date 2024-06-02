@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../App";
 function Timer() {
   const { setStatus } = useContext(GameContext);
-  const [secondsRemaining, setSecondsRemaining] = useState(90);
+  const [secondsRemaining, setSecondsRemaining] = useState(30);
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
 
