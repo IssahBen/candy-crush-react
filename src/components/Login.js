@@ -22,7 +22,7 @@ function Login() {
         setToken(data.authentication_token);
       }
     } catch {
-      alert("there was an error loading data..");
+      alert("Server Offline");
     } finally {
     }
   }
