@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+ /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../App";
@@ -27,7 +27,7 @@ function SignUp() {
         setToken(data.token);
       }
     } catch {
-      alert("there was an error loading data..");
+      alert("Server offline");
     } finally {
     }
   }
